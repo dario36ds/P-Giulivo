@@ -20,7 +20,8 @@ function setFieldError(field, message) {
 
 function validateReservation(data) {
   const errors = {};
-  if (!data.name || data.name.trim().length < 2) errors.name = 'Inserisci nome e cognome.';
+  if (!data.firstName || data.firstName.trim().length < 2) errors.firstName = 'Inserisci il nome.';
+  if (!data.lastName || data.lastName.trim().length < 2) errors.lastName = 'Inserisci il cognome.';
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errors.email = 'Email non valida.';
   if (!/^[0-9+\s]{6,18}$/.test(data.phone)) errors.phone = 'Numero di telefono non valido.';
   if (!data.date) errors.date = 'Scegli una data.';
@@ -47,7 +48,8 @@ function initReservationForm() {
     statusBox.textContent = '';
 
     const data = {
-      name: form.name.value.trim(),
+      firstName: form.firstName.value.trim(),
+      lastName: form.lastName.value.trim(),
       email: form.email.value.trim(),
       phone: form.phone.value.trim(),
       date: form.date.value,
@@ -57,7 +59,7 @@ function initReservationForm() {
     };
 
     const errors = validateReservation(data);
-    ['name', 'email', 'phone', 'date', 'time', 'people'].forEach(key => {
+    ['firstName', 'lastName', 'email', 'phone', 'date', 'time', 'people'].forEach(key => {
       const field = form.querySelector(`[data-field="${key}"]`);
       if (field) setFieldError(field, errors[key]);
     });
@@ -75,7 +77,7 @@ function initReservationForm() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: data.name,
+          name: `${data.firstName} ${data.lastName}`.trim(),
           email: data.email,
           phone: data.phone,
           reservationDate: data.date,

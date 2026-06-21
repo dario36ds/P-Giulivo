@@ -57,24 +57,32 @@
 
       <form id="reservation-form" class="reveal" novalidate>
         <div class="field-row">
-          <div class="field" data-field="name">
-            <label for="res-name">Nome e cognome</label>
-            <input type="text" id="res-name" name="name" autocomplete="name" required>
+          <div class="field" data-field="firstName">
+            <label for="res-first-name">Nome</label>
+            <input type="text" id="res-first-name" name="firstName" autocomplete="given-name" required>
             <span class="field-error"></span>
           </div>
-          <div class="field" data-field="people">
-            <label for="res-people">Persone</label>
-            <input type="number" id="res-people" name="people" min="1" max="20" value="2" required>
+          <div class="field" data-field="lastName">
+            <label for="res-last-name">Cognome</label>
+            <input type="text" id="res-last-name" name="lastName" autocomplete="family-name" required>
             <span class="field-error"></span>
           </div>
         </div>
 
         <div class="field-row">
+          <div class="field" data-field="people">
+            <label for="res-people">Persone</label>
+            <input type="number" id="res-people" name="people" min="1" max="20" value="2" required>
+            <span class="field-error"></span>
+          </div>
           <div class="field" data-field="date">
             <label for="res-date">Data</label>
             <input type="date" id="res-date" name="date" required>
             <span class="field-error"></span>
           </div>
+        </div>
+
+        <div class="field-row">
           <div class="field" data-field="time">
             <label for="res-time">Orario</label>
             <select id="res-time" name="time" required>
@@ -90,19 +98,17 @@
             </select>
             <span class="field-error"></span>
           </div>
-        </div>
-
-        <div class="field-row">
           <div class="field" data-field="email">
             <label for="res-email">Email</label>
             <input type="email" id="res-email" name="email" autocomplete="email" required>
             <span class="field-error"></span>
           </div>
-          <div class="field" data-field="phone">
-            <label for="res-phone">Telefono</label>
-            <input type="tel" id="res-phone" name="phone" autocomplete="tel" required>
-            <span class="field-error"></span>
-          </div>
+        </div>
+
+        <div class="field" data-field="phone">
+          <label for="res-phone">Telefono</label>
+          <input type="tel" id="res-phone" name="phone" autocomplete="tel" required>
+          <span class="field-error"></span>
         </div>
 
         <div class="field">
