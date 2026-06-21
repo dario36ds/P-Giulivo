@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard prenotazioni — Giulivo</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<header class="admin-topbar">
+  <div class="container">
+    <a class="brand" href="dashboard.html">
+      <img class="brand-mark-img" src="../assets/logo-placeholder.svg" alt="Giulivo — logo (segnaposto)">
+    </a>
+    <div class="admin-actions">
+      <span class="admin-who" id="admin-who"></span>
+      <button class="btn btn--ghost" id="logout-btn" style="border-color: var(--su-scuro); color: var(--su-scuro);">Esci</button>
+    </div>
+  </div>
+</header>
+
+<main class="admin-main">
+  <div class="container">
+
+    <div class="admin-stats">
+      <div class="stat-card"><span class="stat-num" id="stat-today">–</span><span class="stat-label">Oggi</span></div>
+      <div class="stat-card"><span class="stat-num" id="stat-pending">–</span><span class="stat-label">Da confermare</span></div>
+      <div class="stat-card"><span class="stat-num" id="stat-week">–</span><span class="stat-label">Prossimi 7 giorni</span></div>
+      <div class="stat-card"><span class="stat-num" id="stat-total">–</span><span class="stat-label">Totale</span></div>
+    </div>
+
+    <div class="filter-bar">
+      <div class="field">
+        <label for="filter-status">Stato</label>
+        <select id="filter-status">
+          <option value="">Tutti</option>
+          <option value="pending">Da confermare</option>
+          <option value="confirmed">Confermate</option>
+          <option value="declined">Rifiutate</option>
+          <option value="completed">Completate</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="filter-from">Dal</label>
+        <input type="date" id="filter-from">
+      </div>
+      <div class="field">
+        <label for="filter-to">Al</label>
+        <input type="date" id="filter-to">
+      </div>
+      <button class="btn btn--primary" id="filter-apply">Filtra</button>
+      <button class="btn btn--ghost" id="filter-reset">Azzera</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="reservations">
+        <thead>
+          <tr>
+            <th>Data</th><th>Ora</th><th>Nome</th><th>Persone</th><th>Contatti</th><th>Note</th><th>Stato</th><th>Azioni</th>
+          </tr>
+        </thead>
+        <tbody id="reservations-tbody">
+          <tr><td colspan="8" class="empty-state">Caricamento prenotazioni…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accesso admin — Giulivo</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-login">
+  <div class="login-card">
+    <img class="brand-mark-img" src="../assets/logo-placeholder.svg" alt="Giulivo — logo (segnaposto)">
+    <h1>Area gestione</h1>
+    <p class="lede">Accedi per gestire le prenotazioni di Giulivo.</p>
+
+    <div class="login-error" id="login-error"></div>
+
+    <form id="login-form" novalidate>
+      <div class="field">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" name="email" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" name="password" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn--primary btn--block" id="login-submit">Accedi</button>
+    </form>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

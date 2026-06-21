@@ -1,0 +1,87 @@
+/* ==========================================================================
+   GIULIVO ADMIN — stili dashboard (allineati al design system v2)
+   ========================================================================== */
+
+.admin-body { background: var(--avorio-deep); min-height: 100vh; }
+
+/* --- Login ---------------------------------------------------------------*/
+.admin-login {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: var(--space-3);
+}
+.login-card {
+  width: 100%; max-width: 380px; background: var(--avorio-card);
+  border: 1px solid var(--avorio-deep);
+  padding: var(--space-4);
+}
+.login-card .brand-mark-img { height: 40px; margin: 0 auto var(--space-3); display: block; }
+.login-card h1 { text-align: center; font-size: 1.7rem; }
+.login-card .lede { text-align: center; margin: 0 auto var(--space-3); font-size: 0.95rem; max-width: none; }
+.login-card .field { margin-bottom: var(--space-2); }
+.login-error {
+  display: none; background: #F2DCD2; color: var(--argilla-deep); border: 1px solid #E0B49E;
+  padding: 0.7rem 1rem; font-size: 0.86rem; margin-bottom: var(--space-2);
+}
+.login-error.is-visible { display: block; }
+
+/* --- Topbar ----------------------------------------------------------- */
+.admin-topbar {
+  background: var(--inchiostro); color: var(--su-scuro);
+  padding: var(--space-2) 0; position: sticky; top: 0; z-index: 50;
+}
+.admin-topbar .container { display: flex; align-items: center; justify-content: space-between; }
+.admin-topbar .brand-mark-img { height: 30px; filter: brightness(0) invert(1) opacity(0.9); }
+.admin-topbar .brand { gap: 0.6rem; }
+.admin-who { font-size: 0.8rem; opacity: 0.75; margin-right: var(--space-2); }
+.admin-actions { display: flex; align-items: center; gap: var(--space-2); }
+
+/* --- Layout ----------------------------------------------------------- */
+.admin-main { padding: var(--space-4) 0 var(--space-6); }
+.admin-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); margin-bottom: var(--space-4); }
+.stat-card { background: var(--avorio-card); border: 1px solid var(--avorio-deep); padding: var(--space-2) var(--space-3); }
+.stat-card .stat-num { font-family: var(--font-display); font-size: 2.1rem; color: var(--inchiostro); font-weight: 500; line-height: 1; }
+.stat-card .stat-label { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--oliva); margin-top: 4px; display: block; }
+
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: flex-end;
+  background: var(--avorio-card); padding: var(--space-2) var(--space-3); border: 1px solid var(--avorio-deep);
+  margin-bottom: var(--space-3);
+}
+.filter-bar .field { margin-bottom: 0; min-width: 160px; }
+.filter-bar .field label { margin-bottom: 0.3rem; }
+
+/* --- Tabella prenotazioni ----------------------------------------------- */
+.table-wrap { background: var(--avorio-card); border: 1px solid var(--avorio-deep); overflow-x: auto; }
+table.reservations { width: 100%; border-collapse: collapse; min-width: 880px; }
+table.reservations th {
+  text-align: left; font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--oliva); padding: var(--space-2) var(--space-2);
+  border-bottom: 1px solid var(--avorio-deep); white-space: nowrap;
+}
+table.reservations td { padding: var(--space-2); border-bottom: 1px solid var(--avorio-deep); vertical-align: top; font-size: 0.92rem; }
+table.reservations tr:last-child td { border-bottom: none; }
+table.reservations td.notes-cell { max-width: 220px; color: var(--oliva); font-size: 0.85rem; }
+
+.status-badge {
+  display: inline-block; font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; padding: 0.3rem 0.65rem; border-radius: 999px;
+}
+.status-badge.pending { background: #F2E6D9; color: #8A5A12; }
+.status-badge.confirmed { background: #E2E6D8; color: var(--oliva); }
+.status-badge.declined { background: #F2DCD2; color: var(--argilla-deep); }
+.status-badge.completed { background: #E2DCD0; color: #5B5447; }
+
+.row-actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.row-actions button {
+  font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 0.4rem 0.6rem; border: 1px solid var(--avorio-deep); color: var(--inchiostro);
+}
+.row-actions button:hover { border-color: var(--inchiostro); }
+.row-actions button.danger { border-color: #E0B49E; color: var(--argilla-deep); }
+.row-actions button.danger:hover { border-color: var(--argilla-deep); }
+
+.empty-state { text-align: center; padding: var(--space-5) var(--space-3); color: var(--oliva); }
+
+@media (max-width: 880px) {
+  .admin-stats { grid-template-columns: repeat(2, 1fr); }
+}

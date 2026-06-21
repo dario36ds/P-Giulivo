@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prenota un tavolo — Giulivo Vicopisano</title>
+<meta name="description" content="Prenota un tavolo da Giulivo, Località Luchetta, Vicopisano. Aperti a cena. Risposta entro poche ore.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Vai al contenuto</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img class="brand-mark-img" src="assets/logo-placeholder.svg" alt="Giulivo — logo (segnaposto)">
+    </a>
+    <nav class="nav-desktop" aria-label="Navigazione principale">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menù</a></li>
+        <li><a href="chi-siamo.html">Chi siamo</a></li>
+        <li><a href="galleria.html">Galleria</a></li>
+      </ul>
+      <div class="hours-pill" data-hours-widget><span class="dot"></span><span data-hours-label>Orari</span></div>
+      <a class="btn btn--primary" href="prenotazioni.html" aria-current="page">Prenota</a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Apri il menù"><span></span></button>
+  </div>
+</header>
+
+<div class="nav-mobile">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menù</a></li>
+    <li><a href="chi-siamo.html">Chi siamo</a></li>
+    <li><a href="galleria.html">Galleria</a></li>
+    <li><a href="prenotazioni.html">Prenota</a></li>
+  </ul>
+  <a class="btn btn--primary btn--block" href="prenotazioni.html">Prenota un tavolo</a>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a> · Prenota</div>
+      <span class="eyebrow">Prenotazioni</span>
+      <h1>Prenota il tuo tavolo <em>da Giulivo</em>.</h1>
+      <p class="lede">Compila il modulo: ti rispondiamo via email o telefono per confermare. Per gruppi numerosi o occasioni speciali, scrivici direttamente su WhatsApp.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container reservation-wrap">
+
+      <form id="reservation-form" class="reveal" novalidate>
+        <div class="field-row">
+          <div class="field" data-field="name">
+            <label for="res-name">Nome e cognome</label>
+            <input type="text" id="res-name" name="name" autocomplete="name" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="field" data-field="people">
+            <label for="res-people">Persone</label>
+            <input type="number" id="res-people" name="people" min="1" max="20" value="2" required>
+            <span class="field-error"></span>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field" data-field="date">
+            <label for="res-date">Data</label>
+            <input type="date" id="res-date" name="date" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="field" data-field="time">
+            <label for="res-time">Orario</label>
+            <select id="res-time" name="time" required>
+              <option value="">Scegli un orario</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+              <option value="21:30">21:30</option>
+              <option value="22:00">22:00</option>
+              <option value="22:30">22:30</option>
+            </select>
+            <span class="field-error"></span>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field" data-field="email">
+            <label for="res-email">Email</label>
+            <input type="email" id="res-email" name="email" autocomplete="email" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="field" data-field="phone">
+            <label for="res-phone">Telefono</label>
+            <input type="tel" id="res-phone" name="phone" autocomplete="tel" required>
+            <span class="field-error"></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="res-notes">Note (allergie, occasioni speciali, seggioloni…)</label>
+          <textarea id="res-notes" name="notes" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block">Richiedi il tavolo</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+
+      <aside class="info-card reveal">
+        <span class="eyebrow">Contatti</span>
+        <h3>Tutto quello che ti serve</h3>
+        <ul class="info-list">
+          <li><span class="ic">—</span><span>Località Luchetta, 7 — 56010 Vicopisano (PI)</span></li>
+          <li><span class="ic">—</span><span><a href="tel:+393888566367">388 856 6367</a></span></li>
+          <li><span class="ic">—</span><span><a href="https://wa.me/393888566367" target="_blank" rel="noopener">Scrivici su WhatsApp</a></span></li>
+          <li><span class="ic">—</span><span>Aperti a cena, tutti i giorni tranne il lunedì (da confermare)</span></li>
+        </ul>
+        <iframe class="map-embed" loading="lazy"
+          src="https://www.google.com/maps?q=GIULIVO+CUCINA+E+BUONUMORE,+Localit%C3%A0+Luchetta,+7,+56010+Vicopisano+PI&output=embed"
+          title="Mappa: Giulivo, Località Luchetta 7, Vicopisano"></iframe>
+        <a class="btn btn--ghost" style="margin-top: var(--space-2); border-color: rgba(236,231,217,0.4);" href="https://maps.google.com?q=GIULIVO%20CUCINA%20E%20BUONUMORE,%20Localit%C3%A0%20Luchetta,%207,%2056010%20Vicopisano%20PI&ftid=0x12d5893bb9168ad1:0xb95f02d1a116ed0b" target="_blank" rel="noopener">Apri in Google Maps →</a>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="brand-mark-img" src="assets/logo-placeholder.svg" alt="Giulivo — logo (segnaposto)">
+        <p>Cucina e buonumore in Località Luchetta, Vicopisano (PI). Aperti a cena.</p>
+        <div class="social-row">
+          <a href="https://www.instagram.com/giulivo_ristorante" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
+          <a href="https://www.facebook.com/p/Giulivo-61576152287124/" aria-label="Facebook" target="_blank" rel="noopener">FB</a>
+        </div>
+      </div>
+      <div>
+        <h4>Esplora</h4>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menù</a>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="galleria.html">Galleria</a>
+      </div>
+      <div>
+        <h4>Prenota</h4>
+        <a href="prenotazioni.html">Prenota online</a>
+        <a href="tel:+393888566367">388 856 6367</a>
+        <a href="https://wa.me/393888566367" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <div>
+        <h4>Dove siamo</h4>
+        <a href="https://maps.google.com?q=GIULIVO%20CUCINA%20E%20BUONUMORE,%20Localit%C3%A0%20Luchetta,%207,%2056010%20Vicopisano%20PI&ftid=0x12d5893bb9168ad1:0xb95f02d1a116ed0b" target="_blank" rel="noopener">Località Luchetta, 7<br>56010 Vicopisano (PI)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Giulivo — Cucina e Buonumore</span>
+      <span>P.IVA da inserire</span>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner">
+  <p>Usiamo cookie tecnici per far funzionare bene il sito. Nessun dato viene venduto a terzi.</p>
+  <div class="cookie-actions">
+    <button class="btn btn--primary" data-cookie-choice="accepted">Va bene così</button>
+    <button class="btn btn--ghost" data-cookie-choice="declined">Solo i necessari</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/config.js"></script>
+<script src="js/reservation.js"></script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menù — Giulivo Vicopisano</title>
+<meta name="description" content="Il menù di Giulivo: Menù di Mare e Menù di Terra, primavera/estate 2026. Antipasti, primi, secondi, contorni e dessert della cucina toscana.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap">
+<style>
+  /* ============================================================
+     Replica grafica del menù cartaceo reale (carta crema, titoli
+     "a pennarello", filigrana decorativa). Scoperto a parte dal
+     resto del sito, per restare fedeli al documento originale.
+     ============================================================ */
+  .menu-doc {
+    --menu-cream: #F0EABA;
+    --menu-ink: #181610;
+    background: var(--menu-cream);
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-5) 0 var(--space-6);
+  }
+  .menu-doc .container { position: relative; z-index: 1; }
+  .menu-watermark { position: absolute; width: 460px; max-width: 60vw; height: auto; pointer-events: none; z-index: 0; }
+  .menu-watermark.w1 { top: -60px; right: -80px; opacity: 0.55; }
+  .menu-watermark.w2 { top: 1050px; left: -160px; opacity: 0.45; transform: scaleX(-1) rotate(12deg); }
+  .menu-watermark.w3 { top: 2300px; right: -140px; opacity: 0.4; transform: rotate(-8deg); }
+
+  .menu-cover { text-align: center; padding-bottom: var(--space-4); margin-bottom: var(--space-5); border-bottom: 2px solid rgba(24,22,16,0.15); }
+  .menu-wordmark-row { display: inline-flex; align-items: flex-start; gap: 0.4rem; }
+  .menu-wordmark { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: clamp(3.2rem, 9vw, 5.8rem); color: var(--menu-ink); line-height: 0.85; letter-spacing: 0.01em; }
+  .menu-twig { width: 56px; height: 56px; margin-top: -6px; }
+  .menu-cover-tagline { font-family: var(--font-body); font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; font-size: 0.8rem; margin-top: 0.7rem; color: var(--menu-ink); }
+  .menu-cover-season { font-family: var(--font-display); font-style: italic; color: var(--oliva); margin-top: var(--space-2); font-size: 1.15rem; }
+
+  .menu-jumpnav { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin-top: var(--space-3); }
+  .menu-jumpnav a { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.5rem 1.1rem; border: 1px solid rgba(24,22,16,0.3); border-radius: 999px; color: var(--menu-ink); }
+  .menu-jumpnav a:hover { background: var(--menu-ink); color: var(--menu-cream); }
+
+  .menu-block { max-width: 720px; margin: 0 auto var(--space-5); scroll-margin-top: 100px; }
+  .menu-section-title { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: clamp(1.9rem, 4vw, 2.7rem); color: var(--menu-ink); margin-bottom: var(--space-3); }
+  .menu-subhead { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.2rem; color: var(--menu-ink); margin: var(--space-3) 0 var(--space-1); }
+  .menu-subhead:first-of-type { margin-top: 0; }
+
+  .menu-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 0.6rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(24,22,16,0.08); }
+  .menu-row:last-child { border-bottom: none; }
+  .menu-row-name { font-family: var(--font-display); font-weight: 600; font-size: 1.14rem; color: var(--menu-ink); }
+  .menu-allergen { font-size: 0.62em; vertical-align: text-top; color: var(--oliva); font-family: var(--font-body); font-weight: 600; margin-left: 0.15rem; }
+  .menu-row-price { font-family: var(--font-display); font-weight: 600; font-size: 1.12rem; color: var(--menu-ink); white-space: nowrap; }
+  .menu-row-desc { flex-basis: 100%; font-size: 0.88rem; color: var(--inchiostro-soft); margin-top: -0.25rem; }
+
+  .menu-note { font-style: italic; font-size: 0.86rem; color: var(--oliva); margin: var(--space-2) 0 0; text-align: center; }
+
+  .menu-legend { max-width: 720px; margin: var(--space-4) auto 0; padding-top: var(--space-3); border-top: 1px solid rgba(24,22,16,0.15); }
+  .menu-legend p:first-child { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--menu-ink); margin-bottom: var(--space-1); }
+  .menu-legend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.35rem 1.5rem; font-size: 0.78rem; color: var(--oliva); }
+  .menu-legend-note { font-size: 0.74rem; color: var(--oliva); margin-top: var(--space-2); font-style: italic; }
+
+  @media (max-width: 700px) {
+    .menu-watermark { width: 320px; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Vai al contenuto</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="menu-emblem" viewBox="0 0 800 900">
+    <g fill="none" stroke="#B9B587" stroke-width="34" stroke-linecap="round">
+      <line x1="420" y1="160" x2="420" y2="40"/>
+      <line x1="420" y1="160" x2="420" y2="20" transform="rotate(28 420 160)"/>
+      <line x1="420" y1="160" x2="420" y2="50" transform="rotate(58 420 160)"/>
+      <line x1="420" y1="160" x2="420" y2="30" transform="rotate(95 420 160)"/>
+      <line x1="420" y1="160" x2="420" y2="45" transform="rotate(135 420 160)"/>
+      <line x1="420" y1="160" x2="420" y2="25" transform="rotate(178 420 160)"/>
+      <line x1="420" y1="160" x2="420" y2="55" transform="rotate(212 420 160)"/>
+      <line x1="420" y1="160" x2="420" y2="35" transform="rotate(250 420 160)"/>
+      <line x1="420" y1="160" x2="420" y2="48" transform="rotate(295 420 160)"/>
+      <line x1="420" y1="160" x2="420" y2="22" transform="rotate(332 420 160)"/>
+    </g>
+    <path d="M 560,260 C 700,340 660,520 520,560 C 400,595 380,700 480,760 C 540,795 600,790 650,750"
+          fill="none" stroke="#B9B587" stroke-width="58" stroke-linecap="round"/>
+    <circle cx="700" cy="430" r="52" fill="#B9B587"/>
+  </symbol>
+</svg>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img class="brand-mark-img" src="assets/logo-placeholder.svg" alt="Giulivo — logo (segnaposto)">
+    </a>
+    <nav class="nav-desktop" aria-label="Navigazione principale">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" aria-current="page">Menù</a></li>
+        <li><a href="chi-siamo.html">Chi siamo</a></li>
+        <li><a href="galleria.html">Galleria</a></li>
+      </ul>
+      <div class="hours-pill" data-hours-widget><span class="dot"></span><span data-hours-label>Orari</span></div>
+      <a class="btn btn--ghost" href="prenotazioni.html">Prenota</a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Apri il menù"><span></span></button>
+  </div>
+</header>
+
+<div class="nav-mobile">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menù</a></li>
+    <li><a href="chi-siamo.html">Chi siamo</a></li>
+    <li><a href="galleria.html">Galleria</a></li>
+    <li><a href="prenotazioni.html">Prenota</a></li>
+  </ul>
+  <a class="btn btn--primary btn--block" href="prenotazioni.html">Prenota un tavolo</a>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a> · Menù</div>
+      <span class="eyebrow">Il menù</span>
+      <h1>Terra e mare, <em>come piace a noi</em>.</h1>
+      <p class="lede">Il menù di stagione — primavera/estate 2026. Pasta fresca fatta a mano, prodotta dal pastificio "La Castellana".</p>
+    </div>
+  </section>
+
+  <section class="menu-doc">
+    <svg class="menu-watermark w1" aria-hidden="true"><use href="#menu-emblem"></use></svg>
+    <svg class="menu-watermark w2" aria-hidden="true"><use href="#menu-emblem"></use></svg>
+    <svg class="menu-watermark w3" aria-hidden="true"><use href="#menu-emblem"></use></svg>
+
+    <div class="container">
+
+      <div class="menu-cover reveal">
+        <div class="menu-wordmark-row">
+          <span class="menu-wordmark">Giulivo</span>
+          <svg class="menu-twig" viewBox="0 0 64 64" aria-hidden="true">
+            <g stroke="#181610" stroke-width="3.5" stroke-linecap="round" fill="none">
+              <path d="M6,40 L26,20"/>
+              <path d="M12,30 L20,22"/>
+              <path d="M16,38 L24,30"/>
+            </g>
+            <ellipse cx="40" cy="14" rx="9" ry="15" fill="#181610" transform="rotate(35 40 14)"/>
+            <circle cx="52" cy="26" r="6" fill="#181610"/>
+          </svg>
+        </div>
+        <p class="menu-cover-tagline">Cucina e buonumore</p>
+        <p class="menu-cover-season">Menù primavera / estate 2026</p>
+        <div class="menu-jumpnav">
+          <a href="#mare">Menù di mare</a>
+          <a href="#terra">Menù di terra</a>
+          <a href="#contorni">Contorni</a>
+          <a href="#dessert">Dessert</a>
+        </div>
+      </div>
+
+      <div class="menu-block reveal" id="mare">
+        <h2 class="menu-section-title">Menù di mare</h2>
+
+        <h3 class="menu-subhead">Antipasti</h3>
+        <div class="menu-row">
+          <span class="menu-row-name">Impepata di cozze<span class="menu-allergen">(1,12,14)</span></span>
+          <span class="menu-row-price">11€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Tris Giulivo<span class="menu-allergen">(1,3,4,6,12,14)</span></span>
+          <span class="menu-row-price">16€</span>
+          <span class="menu-row-desc">Julienne di seppie alla griglia con finocchio croccante e pomodorini</span>
+          <span class="menu-row-desc">Bocconcini di tonno marinato con salsa alla curcuma</span>
+          <span class="menu-row-desc">Alici dorate con maionese di aglio</span>
+        </div>
+
+        <h3 class="menu-subhead">Primi piatti</h3>
+        <div class="menu-row">
+          <span class="menu-row-name">Rigatoncini alla tarantina<span class="menu-allergen">(1,3,6,11,12,14)</span></span>
+          <span class="menu-row-price">12€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Chitarrini allo scoglio<span class="menu-allergen">(1,2,3,4,6,10,11,12,14)</span></span>
+          <span class="menu-row-price">15€</span>
+        </div>
+
+        <h3 class="menu-subhead">Secondi</h3>
+        <div class="menu-row">
+          <span class="menu-row-name">Frittura di totani e gamberoni<span class="menu-allergen">(1,2,14)</span></span>
+          <span class="menu-row-price">16€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Tonno in crosta di pistacchio con riduzione di aceto balsamico<span class="menu-allergen">(1,2,14)</span></span>
+          <span class="menu-row-price">18€</span>
+        </div>
+
+        <p class="menu-note">Tutta la nostra pasta fresca è fatta a mano e prodotta dal pastificio "La Castellana"</p>
+      </div>
+
+      <div class="menu-block reveal" id="terra">
+        <h2 class="menu-section-title">Menù di terra</h2>
+
+        <h3 class="menu-subhead">Antipasti</h3>
+        <div class="menu-row">
+          <span class="menu-row-name">Burratina su crema di pomodori gialli, melanzana fumè e olive disidratate<span class="menu-allergen">(1,7)</span></span>
+          <span class="menu-row-price">9€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Uovo pochè con asparagi, crema di pecorino semistagionato e crumble di mais<span class="menu-allergen">(1,3,7)</span></span>
+          <span class="menu-row-price">9€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Rustico toscano<span class="menu-allergen">(1,7,12)</span></span>
+          <span class="menu-row-price">14€</span>
+          <span class="menu-row-desc">Affettati, formaggi, polentina e crostino ai fegatini</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Tartare di fassona piemontese con cipolle in agrodolce, tuorlo marinato, crema di burrata e senape in grani<span class="menu-allergen">(10)</span></span>
+          <span class="menu-row-price">15€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Prosciutto Patanegra<span class="menu-allergen">(1,7)</span></span>
+          <span class="menu-row-price">19€</span>
+        </div>
+
+        <h3 class="menu-subhead">Primi piatti</h3>
+        <div class="menu-row">
+          <span class="menu-row-name">Risotto alle erbe aromatiche con caprino fresco, granella di nocciole tostate e polvere di speck<span class="menu-allergen">(1,7,8)</span></span>
+          <span class="menu-row-price">12€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Rigatoncini al pomodoro fresco con stracciatella e pesto<span class="menu-allergen">(1,3,6,7,8,10,11)</span></span>
+          <span class="menu-row-price">13€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Gigli alla Giulivo<span class="menu-allergen">(1,3,6,9,10,11,12)</span></span>
+          <span class="menu-row-price">14€</span>
+          <span class="menu-row-desc">Ragù di ossobuco con olive taggiasche e zafferano</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Cappellacci di patate con crema di porcini, fonduta di pecorino e guanciale croccante<span class="menu-allergen">(1,3,6,7,10,11,12)</span></span>
+          <span class="menu-row-price">14€</span>
+        </div>
+
+        <p class="menu-note">Tutta la nostra pasta fresca è fatta a mano e prodotta dal pastificio "La Castellana"</p>
+
+        <h3 class="menu-subhead">Secondi piatti</h3>
+        <div class="menu-row">
+          <span class="menu-row-name">Filetto di maiale con cipolle al vino rosso, soia e fonduta di pecorino semistagionato<span class="menu-allergen">(1,6,7,12)</span></span>
+          <span class="menu-row-price">14€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Petto d'anatra al Chianti classico<span class="menu-allergen">(12)</span></span>
+          <span class="menu-row-price">15€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Peposo della tradizione<span class="menu-allergen">(1,9,12)</span></span>
+          <span class="menu-row-price">16€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Fracosta di manzo con crudaiola di pomodori e rucola<span class="menu-allergen">(1)</span></span>
+          <span class="menu-row-price">17€</span>
+        </div>
+      </div>
+
+      <div class="menu-block reveal" id="contorni">
+        <h2 class="menu-section-title">Contorni</h2>
+        <div class="menu-row">
+          <span class="menu-row-name">Patate fritte<span class="menu-allergen">(1)</span></span>
+          <span class="menu-row-price">4,5€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Patate arrosto<span class="menu-allergen">(1)</span></span>
+          <span class="menu-row-price">4,5€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Verdure saltate (secondo stagione)<span class="menu-allergen">(1)</span></span>
+          <span class="menu-row-price">4,5€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Fagioli cannellini<span class="menu-allergen">(1)</span></span>
+          <span class="menu-row-price">4,5€</span>
+        </div>
+      </div>
+
+      <div class="menu-block reveal" id="dessert" style="margin-bottom: 0;">
+        <h2 class="menu-section-title">Dessert</h2>
+        <div class="menu-row">
+          <span class="menu-row-name">Tiramisù<span class="menu-allergen">(1,3,7)</span></span>
+          <span class="menu-row-price">5€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Cheesecake frutti di bosco o cioccolata<span class="menu-allergen">(1,7)</span></span>
+          <span class="menu-row-price">5€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Semifreddo al croccantino con coulis di fragole<span class="menu-allergen">(1,3,7)</span></span>
+          <span class="menu-row-price">5€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Cantuccini e vin santo<span class="menu-allergen">(1,3,7,8,12)</span></span>
+          <span class="menu-row-price">5€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Fragole con panna<span class="menu-allergen">(7)</span></span>
+          <span class="menu-row-price">5€</span>
+        </div>
+        <div class="menu-row">
+          <span class="menu-row-name">Gelato<span class="menu-allergen">(3,7)</span></span>
+          <span class="menu-row-price">5€</span>
+        </div>
+
+        <div class="menu-legend">
+          <p>Legenda allergeni</p>
+          <div class="menu-legend-grid">
+            <span>1 — Cereali con glutine</span>
+            <span>2 — Crostacei</span>
+            <span>3 — Uova</span>
+            <span>4 — Pesce</span>
+            <span>5 — Arachidi</span>
+            <span>6 — Soia</span>
+            <span>7 — Latte</span>
+            <span>8 — Frutta a guscio</span>
+            <span>9 — Sedano</span>
+            <span>10 — Senape</span>
+            <span>11 — Semi di sesamo</span>
+            <span>12 — Solfiti</span>
+            <span>13 — Lupini</span>
+            <span>14 — Molluschi</span>
+          </div>
+          <p class="menu-legend-note">Numerazione standard Reg. UE 1169/2011 — verificare con il locale prima della pubblicazione che corrisponda esattamente alla legenda del menù cartaceo.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section cta-band section--deep">
+    <div class="container reveal">
+      <h2>Il menù si gusta meglio <em>a tavola</em>.</h2>
+      <p class="lede mx-auto text-center">Prenota e vieni a scoprirlo dal vivo.</p>
+      <div class="hero-actions"><a class="btn btn--primary" href="prenotazioni.html">Prenota un tavolo</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="brand-mark-img" src="assets/logo-placeholder.svg" alt="Giulivo — logo (segnaposto)">
+        <p>Cucina e buonumore in Località Luchetta, Vicopisano (PI). Aperti a cena.</p>
+        <div class="social-row">
+          <a href="https://www.instagram.com/giulivo_ristorante" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
+          <a href="https://www.facebook.com/p/Giulivo-61576152287124/" aria-label="Facebook" target="_blank" rel="noopener">FB</a>
+        </div>
+      </div>
+      <div>
+        <h4>Esplora</h4>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menù</a>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="galleria.html">Galleria</a>
+      </div>
+      <div>
+        <h4>Prenota</h4>
+        <a href="prenotazioni.html">Prenota online</a>
+        <a href="tel:+393888566367">388 856 6367</a>
+        <a href="https://wa.me/393888566367" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <div>
+        <h4>Dove siamo</h4>
+        <a href="https://maps.google.com?q=GIULIVO%20CUCINA%20E%20BUONUMORE,%20Localit%C3%A0%20Luchetta,%207,%2056010%20Vicopisano%20PI&ftid=0x12d5893bb9168ad1:0xb95f02d1a116ed0b" target="_blank" rel="noopener">Località Luchetta, 7<br>56010 Vicopisano (PI)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Giulivo — Cucina e Buonumore</span>
+      <span>P.IVA da inserire</span>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner">
+  <p>Usiamo cookie tecnici per far funzionare bene il sito. Nessun dato viene venduto a terzi.</p>
+  <div class="cookie-actions">
+    <button class="btn btn--primary" data-cookie-choice="accepted">Va bene così</button>
+    <button class="btn btn--ghost" data-cookie-choice="declined">Solo i necessari</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
