@@ -1,130 +1,195 @@
 <!doctype html>
 <html lang="it">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Galleria — Giulivo Vicopisano</title>
-<meta name="description" content="Scorci del giardino, della terrazza coperta e dei piatti di Giulivo, ristorante a Vicopisano.">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleria — Giulivo Vicopisano</title>
+  <meta name="description"
+    content="Scorci del giardino, della terrazza coperta e dei piatti di Giulivo, ristorante a Vicopisano.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<a class="skip-link" href="#main">Vai al contenuto</a>
+  <a class="skip-link" href="#main">Vai al contenuto</a>
 
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <img class="brand-mark-img" src="assets/logo-placeholder.svg" alt="Giulivo — logo (segnaposto)">
-    </a>
-    <nav class="nav-desktop" aria-label="Navigazione principale">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menù</a></li>
-        <li><a href="chi-siamo.html">Chi siamo</a></li>
-        <li><a href="galleria.html" aria-current="page">Galleria</a></li>
-      </ul>
-      <div class="hours-pill" data-hours-widget><span class="dot"></span><span data-hours-label>Orari</span></div>
-      <a class="btn btn--ghost" href="prenotazioni.html">Prenota</a>
-    </nav>
-    <button class="nav-toggle" aria-expanded="false" aria-label="Apri il menù"><span></span></button>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img class="brand-mark-img" src="assets/logo.png" alt="Giulivo — logo (segnaposto)">
+      </a>
+      <nav class="nav-desktop" aria-label="Navigazione principale">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menù</a></li>
+          <li><a href="chi-siamo.html">Chi siamo</a></li>
+          <li><a href="galleria.html" aria-current="page">Galleria</a></li>
+        </ul>
+        <div class="hours-pill" data-hours-widget><span class="dot"></span><span data-hours-label>Orari</span></div>
+        <a class="btn btn--ghost" href="prenotazioni.html">Prenota</a>
+      </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Apri il menù"><span></span></button>
+    </div>
+  </header>
+
+  <div class="nav-mobile">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menù</a></li>
+      <li><a href="chi-siamo.html">Chi siamo</a></li>
+      <li><a href="galleria.html">Galleria</a></li>
+      <li><a href="prenotazioni.html">Prenota</a></li>
+    </ul>
+    <a class="btn btn--primary btn--block" href="prenotazioni.html">Prenota un tavolo</a>
   </div>
-</header>
 
-<div class="nav-mobile">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="menu.html">Menù</a></li>
-    <li><a href="chi-siamo.html">Chi siamo</a></li>
-    <li><a href="galleria.html">Galleria</a></li>
-    <li><a href="prenotazioni.html">Prenota</a></li>
-  </ul>
-  <a class="btn btn--primary btn--block" href="prenotazioni.html">Prenota un tavolo</a>
-</div>
+  <main id="main">
 
-<main id="main">
-
-  <section class="page-hero">
-    <div class="container">
-      <div class="breadcrumb"><a href="index.html">Home</a> · Galleria</div>
-      <span class="eyebrow">Galleria</span>
-      <h1>Un assaggio <em>prima di venire a tavola</em>.</h1>
-      <p class="lede">I riquadri qui sotto sono segnaposto: vanno sostituiti con le foto vere del giardino, della terrazza e dei piatti — anche prendendole dal profilo Instagram del locale.</p>
-    </div>
-  </section>
-
-  <section class="section section--tight">
-    <div class="container">
-      <div class="gallery-grid reveal-stagger">
-        <div class="gallery-item is-placeholder"><span>Terrazza coperta, vista sera</span></div>
-        <div class="gallery-item is-placeholder"><span>Giardino sotto i grandi alberi</span></div>
-        <div class="gallery-item is-placeholder"><span>Tavolo apparecchiato</span></div>
-        <div class="gallery-item is-placeholder"><span>Pici cacio e pepe</span></div>
-        <div class="gallery-item is-placeholder"><span>Guido in sala</span></div>
-        <div class="gallery-item is-placeholder"><span>Dolce della casa</span></div>
-        <div class="gallery-item is-placeholder"><span>Aperitivo in giardino</span></div>
-        <div class="gallery-item is-placeholder"><span>Dettaglio cantina</span></div>
-        <div class="gallery-item is-placeholder"><span>Ingresso del locale</span></div>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a> · Galleria</div>
+        <span class="eyebrow">Galleria</span>
+        <h1>Un assaggio <em>prima di venire a tavola</em>.</h1>
+        <p class="lede">I riquadri qui sotto sono segnaposto: vanno sostituiti con le foto vere del giardino, della
+          terrazza e dei piatti — anche prendendole dal profilo Instagram del locale.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section cta-band section--ink">
-    <div class="container reveal">
-      <span class="eyebrow mx-auto" style="justify-content:center;">Seguici</span>
-      <h2>Altri scatti li trovi su <em>Instagram</em>.</h2>
-      <div class="hero-actions">
-        <a class="btn btn--primary" href="https://www.instagram.com/giulivo_ristorante" target="_blank" rel="noopener">@giulivo_ristorante</a>
-        <a class="btn btn--ghost" href="prenotazioni.html">Prenota un tavolo</a>
-      </div>
-    </div>
-  </section>
+    <section class="section section--tight">
+      <div class="container">
+        <div class="gallery-grid reveal-stagger">
+          <div class="gallery-item is-placeholder"><img
+              src="assets/522681511_17853516111486447_7575991330709504273_n.jpg" alt=""></div>
+          <div class="gallery-item is-placeholder"><img
+              src="assets/526461296_17854487118486447_2813912154989328150_n.jpg" alt=""></div>
+          <div class="gallery-item is-placeholder"><img
+              src="assets/539467280_17857759455486447_5781868042258118410_n.jpg" alt=""></div>
+          <div class="gallery-item is-placeholder"><img
+              src="assets/568116825_17863935066486447_4153946447115794590_n.jpg" alt=""></div>
+          <div class="gallery-item is-placeholder"><img
+              src="assets/531195454_17856195399486447_6819520320362008992_n.jpg" alt=""></div>
+          <div class="gallery-item is-placeholder"><img
+              src="assets/573911780_17865148116486447_1836300218889877629_n.jpg" alt=""></div>
+          <div class="gallery-item is-placeholder"><img
+              src="assets/520462406_17852518884486447_3619540092785338193_n.jpg" alt=""></div>
+          <div class="gallery-item is-placeholder"><img
+              src="assets/569159844_17864143704486447_2785822714792304747_n.jpg" alt=""></div>
+          <div class="gallery-item is-placeholder"><img
+              src="assets/722908636_17892941187486447_7354580203451630621_n.jpg" alt=""></div>
 
-</main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img class="brand-mark-img" src="assets/logo-placeholder.svg" alt="Giulivo — logo (segnaposto)">
-        <p>Cucina e buonumore in Località Luchetta, Vicopisano (PI). Aperti a cena.</p>
-        <div class="social-row">
-          <a href="https://www.instagram.com/giulivo_ristorante" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
-          <a href="https://www.facebook.com/p/Giulivo-61576152287124/" aria-label="Facebook" target="_blank" rel="noopener">FB</a>
         </div>
       </div>
-      <div>
-        <h4>Esplora</h4>
-        <a href="index.html">Home</a>
-        <a href="menu.html">Menù</a>
-        <a href="chi-siamo.html">Chi siamo</a>
-        <a href="galleria.html">Galleria</a>
+    </section>
+
+    <section class="section cta-band section--ink">
+      <div class="container reveal">
+        <span class="eyebrow mx-auto" style="justify-content:center;">Seguici</span>
+        <h2>Altri scatti li trovi su <em>Instagram</em>.</h2>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="https://www.instagram.com/giulivo_ristorante/" target="_blank"
+            rel="noopener noreferrer">@giulivo_ristorante</a>
+          <a class="btn btn--ghost" href="prenotazioni.html">Prenota un tavolo</a>
+        </div>
       </div>
-      <div>
-        <h4>Prenota</h4>
-        <a href="prenotazioni.html">Prenota online</a>
-        <a href="tel:+393888566367">388 856 6367</a>
-        <a href="https://wa.me/393888566367" target="_blank" rel="noopener">WhatsApp</a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img class="brand-mark-img" src="assets/logo.png" alt="Giulivo — logo (segnaposto)">
+          <p>Cucina e buonumore in Località Luchetta, Vicopisano (PI). Aperti a cena.</p>
+          <div class="social-row">
+            <a href="https://www.instagram.com/giulivo_ristorante/" aria-label="Seguici su Instagram" target="_blank"
+              rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="6" />
+                <circle cx="12" cy="12" r="4.5" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg></a>
+            <a href="https://www.facebook.com/p/Giulivo-61576152287124/" aria-label="Seguici su Facebook"
+              target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" width="18"
+                height="18" aria-hidden="true">
+                <path
+                  d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.028 4.438 11.022 10.125 11.927v-8.434H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.234 2.686.234v2.953h-1.514c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.434C19.562 23.095 24 18.1 24 12.073z" />
+              </svg></a>
+            <a href="https://wa.me/393888566367" aria-label="Scrivici su WhatsApp" target="_blank"
+              rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"
+                aria-hidden="true">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l5.09-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm4.89 13.58c-.2.56-1.16 1.06-1.59 1.1-.42.04-.43.32-2.68-.59-2.69-1.08-4.3-3.83-4.43-4.01-.13-.17-1.04-1.38-1.04-2.64s.65-1.87.91-2.13c.25-.26.53-.32.71-.32l.51.01c.16 0 .4-.06.62.47.22.55.78 1.9.85 2.04.07.14.11.29.02.46-.08.17-.12.27-.24.43-.13.14-.26.32-.37.43-.13.12-.26.25-.11.5.14.24.64 1.06 1.39 1.72.38.34.86.64 1.22.85.49.27.77.23 1.05-.14.28-.36.73-.95.89-1.19.15-.25.31-.2.52-.12.21.08 1.33.63 1.56.75.23.12.38.17.43.26.06.09.06.52-.15 1.08z" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Esplora</h4>
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menù</a>
+          <a href="chi-siamo.html">Chi siamo</a>
+          <a href="galleria.html">Galleria</a>
+        </div>
+        <div>
+          <h4>Prenota</h4>
+          <a href="prenotazioni.html">Prenota online</a>
+          <a href="tel:+393888566367">+39 388 856 6367</a>
+          <a href="https://wa.me/393888566367" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"
+              fill="currentColor" width="18" height="18" aria-hidden="true">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l5.09-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm4.89 13.58c-.2.56-1.16 1.06-1.59 1.1-.42.04-.43.32-2.68-.59-2.69-1.08-4.3-3.83-4.43-4.01-.13-.17-1.04-1.38-1.04-2.64s.65-1.87.91-2.13c.25-.26.53-.32.71-.32l.51.01c.16 0 .4-.06.62.47.22.55.78 1.9.85 2.04.07.14.11.29.02.46-.08.17-.12.27-.24.43-.13.14-.26.32-.37.43-.13.12-.26.25-.11.5.14.24.64 1.06 1.39 1.72.38.34.86.64 1.22.85.49.27.77.23 1.05-.14.28-.36.73-.95.89-1.19.15-.25.31-.2.52-.12.21.08 1.33.63 1.56.75.23.12.38.17.43.26.06.09.06.52-.15 1.08z" />
+            </svg> WhatsApp</a>
+        </div>
+        <div>
+          <h4>Dove siamo</h4>
+          <a href="https://maps.google.com?q=GIULIVO%20CUCINA%20E%20BUONUMORE,%20Localit%C3%A0%20Luchetta,%207,%2056010%20Vicopisano%20PI&ftid=0x12d5893bb9168ad1:0xb95f02d1a116ed0b"
+            target="_blank" rel="noopener">Località Luchetta, 7<br>56010 Vicopisano (PI)</a>
+        </div>
       </div>
-      <div>
-        <h4>Dove siamo</h4>
-        <a href="https://maps.google.com?q=GIULIVO%20CUCINA%20E%20BUONUMORE,%20Localit%C3%A0%20Luchetta,%207,%2056010%20Vicopisano%20PI&ftid=0x12d5893bb9168ad1:0xb95f02d1a116ed0b" target="_blank" rel="noopener">Località Luchetta, 7<br>56010 Vicopisano (PI)</a>
+      <div class="footer-bottom">
+        <span>© 2026 Giulivo — Cucina e Buonumore</span>
+        <span>P.IVA da inserire</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Giulivo — Cucina e Buonumore</span>
-      <span>P.IVA da inserire</span>
+  </footer>
+
+  <div class="cookie-banner">
+    <p>Usiamo cookie tecnici per far funzionare bene il sito. Nessun dato viene venduto a terzi.</p>
+    <div class="cookie-actions">
+      <button class="btn btn--primary" data-cookie-choice="accepted">Va bene così</button>
+      <button class="btn btn--ghost" data-cookie-choice="declined">Solo i necessari</button>
     </div>
   </div>
-</footer>
 
-<div class="cookie-banner">
-  <p>Usiamo cookie tecnici per far funzionare bene il sito. Nessun dato viene venduto a terzi.</p>
-  <div class="cookie-actions">
-    <button class="btn btn--primary" data-cookie-choice="accepted">Va bene così</button>
-    <button class="btn btn--ghost" data-cookie-choice="declined">Solo i necessari</button>
+  <script src="js/main.js"></script>
+
+  <a class="whatsapp-fab" href="https://wa.me/393888566367" target="_blank" rel="noopener noreferrer"
+    aria-label="Scrivici su WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26" aria-hidden="true">
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l5.09-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm4.89 13.58c-.2.56-1.16 1.06-1.59 1.1-.42.04-.43.32-2.68-.59-2.69-1.08-4.3-3.83-4.43-4.01-.13-.17-1.04-1.38-1.04-2.64s.65-1.87.91-2.13c.25-.26.53-.32.71-.32l.51.01c.16 0 .4-.06.62.47.22.55.78 1.9.85 2.04.07.14.11.29.02.46-.08.17-.12.27-.24.43-.13.14-.26.32-.37.43-.13.12-.26.25-.11.5.14.24.64 1.06 1.39 1.72.38.34.86.64 1.22.85.49.27.77.23 1.05-.14.28-.36.73-.95.89-1.19.15-.25.31-.2.52-.12.21.08 1.33.63 1.56.75.23.12.38.17.43.26.06.09.06.52-.15 1.08z" />
+    </svg>
+  </a>
+
+  <button class="back-to-top" aria-label="Torna in cima"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15" />
+    </svg></button>
+
+  <div class="mobile-sticky" aria-hidden="true">
+    <a href="tel:+393888566367" class="mobile-sticky-call">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+        <path
+          d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.18 6.18l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+      </svg>
+      Chiama
+    </a>
+    <a href="prenotazioni.html" class="mobile-sticky-book">Prenota →</a>
   </div>
-</div>
 
-<script src="js/main.js"></script>
 </body>
+
 </html>
