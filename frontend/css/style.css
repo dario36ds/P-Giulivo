@@ -96,6 +96,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 500; }
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center; /* centra orizzontalmente */
+  text-align: center;      /* centra il testo */
   gap: 0.6rem;
   padding: 0.95rem 1.9rem;
   border-radius: var(--radius);
@@ -104,9 +106,14 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 500; }
   text-transform: uppercase;
   letter-spacing: 0.1em;
   border: 1px solid transparent;
-  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease,
+              background 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease;
   white-space: nowrap;
 }
+
+
 .btn:hover { transform: translateY(-1px); }
 .btn--primary { background: var(--argilla); color: var(--inchiostro); }
 .btn--primary:hover { background: var(--argilla-deep); }
@@ -116,7 +123,13 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 500; }
 .btn--ghost:hover { border-color: var(--argilla); color: var(--argilla); }
 .section--ink .btn--ghost { color: var(--su-scuro); }
 .section--ink .btn--ghost:hover { color: var(--argilla); border-color: var(--argilla); }
-.btn--block { width: 100%; justify-content: center; }
+.btn--block {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 .btn[disabled] { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 /* ==========================================================================
@@ -757,6 +770,9 @@ blockquote.pull {
    con solo un effetto luce per risaltare sul fondo scuro della sidebar */
 .nav-mobile-footer .btn--primary {
   box-shadow: 0 6px 20px -6px rgba(232,112,10,0.45);
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 .nav-mobile-footer .btn--primary:hover {
   box-shadow: 0 8px 24px -6px rgba(232,112,10,0.6);
@@ -769,3 +785,17 @@ blockquote.pull {
               background 0.25s ease, box-shadow 0.25s ease;
 }
 .nav-mobile.is-open .btn { opacity: 1;}
+
+
+.nav-mobile-footer .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 1rem 1.5rem;
+}
+
+.nav-mobile-footer .btn:hover {
+    padding-left: 1.5rem; /* annulla lo spostamento del menu */
+}
