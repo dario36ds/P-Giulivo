@@ -7,7 +7,7 @@
 
 :root {
   /* --- Colore: carta, inchiostro, un solo accento --- */
-  --avorio:        #F3F1EA;
+  --avorio:       #F9F6D8;
   --avorio-deep:    #E9E5DA;
   --avorio-card:    #FFFFFF;
   --inchiostro:     #1C2118;
@@ -56,7 +56,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 button { font: inherit; cursor: pointer; background: none; border: none; }
 h1, h2, h3, h4 { font-family: var(--font-display); margin: 0 0 var(--space-2); font-weight: 500; color: var(--inchiostro); line-height: 1.1; letter-spacing: -0.01em; }
 h1 em, h2 em, h3 em { font-style: italic; font-weight: 400; color: var(--argilla); }
-p { margin: 0 0 var(--space-2); color: var(--inchiostro-soft); }
+p { margin: 0 0 var(--space-2); }
 :focus-visible { outline: 2px solid var(--argilla); outline-offset: 3px; }
 
 .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 var(--space-3); }
@@ -131,11 +131,24 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 500; }
   border-bottom: 1px solid transparent;
 }
 .site-header.is-scrolled {
-  background: rgba(243, 241, 234, 0.94);
-  backdrop-filter: blur(10px);
   height: 68px;
   border-bottom-color: var(--avorio-deep);
 }
+/* Blur separato dall'elemento fixed: evita il bug iOS/Safari per cui
+   position:fixed + backdrop-filter sullo stesso elemento può "staccarsi"
+   dal viewport durante lo scroll e dare l'impressione che l'header scompaia. */
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(243, 241, 234, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+.site-header.is-scrolled::before { opacity: 1; }
 .site-header .container { display: flex; align-items: center; justify-content: space-between; }
 
 .brand { display: flex; align-items: center; gap: 0.7rem; }
@@ -173,11 +186,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 500; }
 .nav-toggle[aria-expanded="true"] span::before { transform: translateY(7px) rotate(45deg); background: var(--avorio) !important; }
 .nav-toggle[aria-expanded="true"] span::after { transform: translateY(-7px) rotate(-45deg); background: var(--avorio) !important; }
 
-.nav-mobile {
-  display: none; position: fixed; inset: 0; background: var(--inchiostro); z-index: 99;
-  padding: var(--space-5) var(--space-3);
-}
-.nav-mobile.is-open { display: block; }
+
 .nav-mobile ul { display: flex; flex-direction: column; gap: var(--space-2); }
 .nav-mobile a { font-family: var(--font-display); font-style: italic; font-size: 2.2rem; color: var(--su-scuro); font-weight: 400; }
 .nav-mobile .btn { margin-top: var(--space-4); }
@@ -552,7 +561,7 @@ blockquote.pull {
 /* --- Intro splash -------------------------------------------------------- */
 .intro-splash {
   position: fixed; inset: 0; z-index: 200;
-  background: var(--inchiostro);
+  background: var(--avorio);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.7,0,.3,1);
@@ -640,3 +649,123 @@ blockquote.pull {
   body { padding-bottom: 0; }
   .hero { min-height: auto; }
 }
+
+
+
+
+
+
+
+
+.nav-mobile {
+  display: block;                          /* sempre nel DOM, non display:none */
+  position: fixed; top: 0; right: 0;
+  width: min(340px, 88vw); height: 100vh;
+  background: var(--inchiostro);
+  z-index: 101;
+  padding: 0;
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(.7,0,.3,1);
+  box-shadow: -12px 0 48px -8px rgba(28,33,24,0);
+  overflow-y: auto;
+  visibility: hidden;
+}
+.nav-mobile.is-open {
+  transform: translateX(0);
+  box-shadow: -12px 0 48px -8px rgba(28,33,24,0.45);
+  visibility: visible;
+}
+
+/* Overlay scuro dietro la sidebar */
+.nav-mobile::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: rgba(28,33,24,0.55);
+  backdrop-filter: blur(2px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.nav-mobile.is-open::before { opacity: 1; }
+
+/* Intestazione sidebar con logo */
+.nav-mobile-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-3) var(--space-3) var(--space-2);
+  border-bottom: 1px solid rgba(236,231,217,0.12);
+}
+.nav-mobile-logo {
+  height: 36px; width: auto;
+  filter: brightness(0) invert(1) opacity(0.85);
+}
+
+.nav-mobile-close {
+  width: 40px; height: 40px;
+  position: relative;
+  background: none; border: none; cursor: pointer;
+}
+.nav-mobile-close span,
+.nav-mobile-close span::before,
+.nav-mobile-close span::after {
+  content: '';
+  position: absolute; left: 8px; width: 24px; height: 1.5px;
+  background: var(--su-scuro);
+  transition: background 0.2s ease;
+}
+.nav-mobile-close span { top: 20px; background: transparent; }
+.nav-mobile-close span::before { top: -7px; transform: translateY(7px) rotate(45deg); }
+.nav-mobile-close span::after { top: 7px; transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile-close:hover span::before,
+.nav-mobile-close:hover span::after { background: var(--argilla); }
+
+
+/* Voci di menu */
+.nav-mobile ul {
+  display: flex; flex-direction: column; gap: 0;
+  padding: var(--space-2) 0;
+}
+.nav-mobile ul li { border-bottom: 1px solid rgba(236,231,217,0.07); }
+.nav-mobile a {
+  display: block;
+  font-family: var(--font-display); font-style: normal; font-weight: 400;
+  font-size: 1.5rem; color: var(--su-scuro);
+  padding: var(--space-2) var(--space-3);
+  transition: color 0.2s ease, padding-left 0.25s ease;
+  letter-spacing: 0.01em;
+}
+.nav-mobile a:hover {
+  color: var(--argilla);
+  padding-left: calc(var(--space-3) + 8px);
+}
+.nav-mobile a[aria-current="page"] {
+  color: var(--argilla);
+}
+/* Footer sidebar con orari + bottone */
+.nav-mobile-footer {
+  padding: var(--space-3);
+  border-top: 1px solid rgba(236,231,217,0.12);
+  margin-top: auto;
+}
+.nav-mobile-hours {
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(236,231,217,0.45); margin-bottom: var(--space-2);
+}
+
+/* Bottone "Prenota un tavolo" nella sidebar — usa il componente .btn--primary
+   di sistema (stessi colori/hover di tutti gli altri bottoni primari del sito),
+   con solo un effetto luce per risaltare sul fondo scuro della sidebar */
+.nav-mobile-footer .btn--primary {
+  box-shadow: 0 6px 20px -6px rgba(232,112,10,0.45);
+}
+.nav-mobile-footer .btn--primary:hover {
+  box-shadow: 0 8px 24px -6px rgba(232,112,10,0.6);
+}
+
+/* Animazione di ingresso del bottone all'apertura della sidebar */
+.nav-mobile .btn {
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.35s ease 0.42s, transform 0.35s ease 0.42s,
+              background 0.25s ease, box-shadow 0.25s ease;
+}
+.nav-mobile.is-open .btn { opacity: 1;}

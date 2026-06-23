@@ -32,16 +32,22 @@
       <button class="nav-toggle" aria-expanded="false" aria-label="Apri il menù"><span></span></button>
     </div>
   </header>
-  ƒ
-  <div class="nav-mobile">
+
+  <div class="nav-mobile" id="nav-mobile">
+    <div class="nav-mobile-header">
+      <button class="nav-mobile-close" id="nav-close" aria-label="Chiudi menu"><span></span></button>
+    </div>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="menu.html">Menù</a></li>
-      <li><a href="chi-siamo.html">Chi siamo</a></li>
+      <li><a href="chi-siamo.html" aria-current="page">Chi siamo</a></li>
       <li><a href="galleria.html">Galleria</a></li>
       <li><a href="prenotazioni.html">Prenota</a></li>
     </ul>
-    <a class="btn btn--primary btn--block" href="prenotazioni.html">Prenota un tavolo</a>
+    <div class="nav-mobile-footer">
+      <p class="nav-mobile-hours" data-hours-widget><span class="dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#8AA05C;margin-right:6px;vertical-align:middle;"></span><span data-hours-label>Orari</span></p>
+      <a class="btn btn--primary btn--block" href="prenotazioni.html">Prenota un tavolo</a>
+    </div>
   </div>
 
   <main id="main">

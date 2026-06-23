@@ -56,8 +56,10 @@ function initHeader() {
 /* --- Mobile nav ---------------------------------------------------------- */
 function initMobileNav() {
   const toggle = document.querySelector('.nav-toggle');
-  const panel = document.querySelector('.nav-mobile');
+  const panel  = document.querySelector('.nav-mobile');
+  const closeBtn = document.querySelector('.nav-mobile-close');
   if (!toggle || !panel) return;
+
   const open = () => {
     panel.classList.add('is-open');
     toggle.setAttribute('aria-expanded', 'true');
@@ -68,10 +70,14 @@ function initMobileNav() {
     toggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   };
-  toggle.addEventListener('click', () => {
-    panel.classList.contains('is-open') ? close() : open();
-  });
+
+  toggle.addEventListener('click', () =>
+    panel.classList.contains('is-open') ? close() : open()
+  );
+  closeBtn?.addEventListener('click', close);
   panel.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  // Click sull'overlay (::before non è cliccabile, usiamo il panel stesso)
+  panel.addEventListener('click', e => { if (e.target === panel) close(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 }
 
