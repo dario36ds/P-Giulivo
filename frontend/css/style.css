@@ -576,9 +576,8 @@ blockquote.pull {
 }
 .intro-logo {
   width: clamp(160px, 40vw, 300px);
-  filter: brightness(0) invert(1); /* logo bianco su scuro */
+  /* nessun filter: il placeholder si vede con i suoi colori */
 }
-
 .intro-scroll-hint {
   position: absolute; bottom: 2.5rem;
   display: flex; align-items: center; gap: 0.6rem;
